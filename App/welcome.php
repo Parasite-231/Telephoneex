@@ -100,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <h3 style="text-align: center;">Create a New Contact</h3>
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-    <input class="form-control" type="mobile"   placeholder="01XXXXXXXXX" name="mobile"  required>
+    <input class="form-control" maxlength="11" type="mobile"   placeholder="01XXXXXXXXX" name="mobile"  required>
     </div>
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Contact Name...</label>
