@@ -21,7 +21,7 @@
   <div class="card-body"  >
   <table id="table_info">
 <tr>
-<th style="text-align: center;">Contact No</th>
+
 <th style="text-align: center;"> Contact Name</th>
 <th style="text-align: center;">Mobile Number</th>
 <th style="text-align: center;">Address</th>
@@ -29,17 +29,21 @@
 </tr>
 
 <?php
+
+
 $conn = mysqli_connect("localhost", "root", "", "phonebook");
 // Check connection
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT Contact_No, contact_name,mobile,address,date from user_phonebook";
+
+echo 'Current script owner: ' . get_current_user();
+$sql = "SELECT  contact_name,mobile,address,date from user_phonebook where user_id =  $query ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Contact_No"]. "</td><td>" . $row["contact_name"] . "</td><td>"
+echo "<tr><td>" . $row["contact_name"]. "</td><td>"
 . $row["mobile"] . "</td><td>". $row["address"] . "</td><td>". $row["date"]. "</td></tr>";
 }
 echo "</table>";

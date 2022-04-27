@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $mobile = $_POST["mobile"];
     $contact_name = $_POST["contact_name"];
     $address = $_POST["address"];
+    $username = $_POST["username"];
   
     // $exists=false;
 
@@ -27,8 +28,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         // $exists = false; 
       
-           
-            $sql = "INSERT INTO `user_phonebook` ( `mobile`, `date`,`contact_name`,`address`) VALUES ('$mobile', current_timestamp(),'$contact_name','$address')";
+            $preSql = "select id from myusers where username = '$username'";
+            $result = mysqli_query($conn, $preSql);
+            while ( $data = mysqli_fetch_array($result, MYSQLI_ASSOC))
+		    {	   
+			    
+                $userId = $data;
+   		    }	
+            print_r($userId);
+            $sql = "INSERT INTO `user_phonebook` (`user_id`, `mobile`, `date`, `contact_name`, `address`) VALUES (   $userId[id], '$mobile', current_timestamp(), '$contact_name', '$address')";
+            print_r($sql);
             $result = mysqli_query($conn, $sql);
             if ($result){
                 $showAlert = true;
@@ -87,33 +96,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </head>
   <body>
     <?php require 'nav.php' ?>
-    
-    <form action="welcome.php" method="POST" style="margin: 5%;width:700px">
-    <div class="card-body">
-	<h5 class="card-title" style=" color: black;"> <?php echo $_SESSION['username']?>'s' phonebook</h5>
-	<p class="card-text" style="font-size: 17px;color: red;">
-	&nbsp;<img src="./icons/phonebook.png" class="rotate" width="60px" height="60px" alt=""></p>
-	<p class="card-text" style="font-size: 17px;color: red;">
-    <!-- Add a contact -->
-	&nbsp;
-    <!-- <img src="date.png" width="30px" height="30px" alt=""> -->
-    <h3 style="text-align: center;">Create a New Contact</h3>
-    <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-    <input class="form-control" maxlength="11" type="mobile"   placeholder="01XXXXXXXXX" name="mobile"  required>
-    </div>
-    <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Contact Name...</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="contact_name" placeholder="Contact Name"  required>
-    </div>
-    <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" name="address" placeholder="Write contact's address..." rows="3"  required></textarea>
-    </div>
-    </p>
-	<button type="submit" class="btn btn-warning" style="float: right;">Add</button></a>
+
+    <h3  style="text-align: center;">Create a New Contact</h3>
+    <div class="card" style="box-shadow: 0 6px 32px 16px rgba(119, 117, 117, 0.2);margin: 5%;width:830px">
+	<div class="card-header">
+	<img src="./icons/user.png" width="60px" height="60px" alt="">
+										
+	<img src="./icons/cl2.png" width="60px" height="60px" style="float: right;" alt="">
+										
 	</div>
-    </form>
+	<div class="card-body">
+    <form action="welcome.php" method="POST" style="margin: 5%;width:700px">
+  
+  <h5 class="card-title" style=" color: black;"> <?php echo $_SESSION['username']?>'s' phonebook</h5>
+  <p class="card-text" style="font-size: 17px;color: red;">
+  &nbsp;<img src="./icons/phonebook.png" class="rotate" width="60px" height="60px" alt=""></p>
+  <p class="card-text" style="font-size: 17px;color: red;">
+  <!-- Add a contact -->
+  &nbsp;
+  <!-- <img src="date.png" width="30px" height="30px" alt=""> -->
+  <h3 style="text-align: center;">Contact Form</h3>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Your username</label>
+  <input class="form-control"  type="text"   placeholder="Username provided during registration" name="username"  required>
+  </div>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
+  <input class="form-control" maxlength="11" type="mobile"   placeholder="01XXXXXXXXX" name="mobile"  required>
+  </div>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Contact Name...</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" name="contact_name" placeholder="Contact Name"  required>
+  </div>
+  <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="address" placeholder="Write contact's address..." rows="3"  required></textarea>
+  </div>
+  </p>
+  <button type="submit" class="btn btn-warning" style="float: right;">Add</button></a>
+  
+  </form>
+	</div>
+    
 
 
 

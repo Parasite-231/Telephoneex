@@ -42,7 +42,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="shortcut icon" type="image/x-icon" href="./icons/icon1.png" />
+    <link rel="stylesheet" href="./css_files/login.css" />
     <title>Login</title>
   </head>
   <body>
@@ -66,7 +67,52 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     ?>
 
-    <div class="container my-4">
+<main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 login-section-wrapper">
+                    <div class="brand-wrapper">
+                        <img src="./icons/phonebook.png" alt="logo" class="logo" />
+                        <h4>Welcome to Telephoneex!</h4>
+                    </div>
+                    <div class="login-wrapper my-auto">
+                        <h3 class="login-title" style="font-weight: lighter;">Log in</h3>
+
+                        <form action="login.php" method="post">
+                         <div class="form-group">
+                         <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+            
+                        </div>
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        </div>
+       
+         
+                        <button type="submit" id="login" class="btn btn-block login-btn">Login</button>
+                        </form>
+
+                                <!--start error message-->
+
+                            
+
+                        <!-- <a href="./resetPassword.html" class="forgot-password-link">Forgot password?</a> -->
+                        <p class="login-wrapper-footer-text">
+                            Don't have an account?
+                            <a href="register.php" class="text-reset">Register here</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-8 px-0 d-none d-sm-block">
+                    <img src="./icons/log.jpg" alt="login image" class="login-img" />
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--end-->
+
+    <!-- <div class="container my-4">
      <h1 class="text-center">Login to our website</h1>
      <form action="login.php" method="post">
         <div class="form-group">
@@ -82,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         <button type="submit" class="btn btn-warning">Login</button>
      </form>
-    </div>
+    </div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

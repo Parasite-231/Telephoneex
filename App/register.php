@@ -51,7 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="shortcut icon" type="image/x-icon" href="./icons/icon1.png" />
+    <link rel="stylesheet" href="./css_files/registrationdesign.css" />
     <title>Registration</title>
   </head>
   <body>
@@ -75,32 +76,55 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     ?>
 
-    <div class="container my-4">
-     <h1 class="text-center">Registration</h1>
-     <form action="register.php" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" maxlength="20" class="form-control" id="username" name="username" aria-describedby="userHelp">
+<main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 login-section-wrapper">
+                    <div class="brand-wrapper">
+                    <img src="./icons/phonebook.png" alt="logo" class="logo" />
+                        <h4>Welcome to Telephoneex!</h4>
+                    </div>
+                    <div class="login-wrapper my-auto">
+                        <h1 class="login-title">Register Here</h1>
+                        <form action="register.php" method="post">
+                        <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" maxlength="20" class="form-control" id="username" name="username" aria-describedby="userHelp">
             
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email"  class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email"  class="form-control" id="email" name="email" aria-describedby="emailHelp">
             
+                        </div>
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" maxlength="15" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                        <label for="cpassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="cpassword" name="cpassword">
+                        <!-- <small id="emailHelp" style="color:brown;" class="form-text ">Make sure to type the same password</small> -->
+                        </div>
+
+                        <button type="submit" id="login" class="btn btn-block login-btn">SignUp</button>
+                        </form>
+
+
+                            
+                        <p class="login-wrapper-footer-text">Already have an account? <a href="login.php"
+                                class="text-reset">login here</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-8 px-0 d-none d-sm-block">
+                    <img src="./icons/reg.jpg" alt="login image" class="login-img">
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" maxlength="15" class="form-control" id="password" name="password">
-        </div>
-        <div class="form-group">
-            <label for="cpassword">Confirm Password</label>
-            <input type="password" class="form-control" id="cpassword" name="cpassword">
-            <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
-        </div>
-         
-        <button type="submit" class="btn btn-warning">SignUp</button>
-     </form>
-    </div>
+    </main>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
