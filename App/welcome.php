@@ -36,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $userId = $data;
    		    }	
             print_r($userId);
+       
             $sql = "INSERT INTO `user_phonebook` (`user_id`, `mobile`, `date`, `contact_name`, `address`) VALUES (   $userId[id], '$mobile', current_timestamp(), '$contact_name', '$address')";
             print_r($sql);
             $result = mysqli_query($conn, $sql);

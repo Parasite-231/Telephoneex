@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +17,8 @@
     <title>Contact List</title>
   </head>
 <body>
-<?php require 'nav.php' ?>
+
+<?php require 'nav2.php' ?>
 <!-- <h3>My Contact List</h3> -->
 <div class="card" style="margin: 5%;">
   <div class="card-header">
@@ -27,41 +33,6 @@
 <th style="text-align: center;">Address</th>
 <th style="text-align: center;">Added Date</th>
 </tr>
-
-<?php
-
-
-$conn = mysqli_connect("localhost", "root", "", "phonebook");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-
-echo 'Current script owner: ' . get_current_user();
-$sql = "SELECT  contact_name,mobile,address,date from user_phonebook where user_id =  $query ";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["contact_name"]. "</td><td>"
-. $row["mobile"] . "</td><td>". $row["address"] . "</td><td>". $row["date"]. "</td></tr>";
-}
-echo "</table>";
-} else { 
-    echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> No Contact has been created yet
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div> ';
-}
-$conn->close();
-?>
-
-</table>
-<button value="Print Table" onclick="myPrintingBot.printTable()" type="button" style="margin-top: 20px;"  class="btn btn-info">Save File </button>
-  </div>
-</div>
 
 <!--Query Table started-->
 
